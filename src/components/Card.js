@@ -89,6 +89,8 @@ const Card = ({ movie }) => {
         <ul>{movie.genre_ids ? genreFinder() : movie.genres.map((genre, index) => (
             <li key = {index}>{genre.name}</li>
         ))}</ul> 
+        {movie.overview ? <h3>Synopsis</h3> : ""}
+        <p>{movie.overview}</p>
   </div>
     );
 };
