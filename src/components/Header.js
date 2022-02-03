@@ -15,7 +15,7 @@ const Header = () => {
                     </NavLink>
                 </ul>
             </nav>
-            <h1>React Movies by Wassim</h1>
+            <h1>React Movies API by Wassim</h1>
         </div>
     );
 };
