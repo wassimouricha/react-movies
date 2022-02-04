@@ -1,10 +1,33 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useState } from 'react/cjs/react.development';
+import Card from '../components/Card';
 import Header from '../components/Header';
 
 const UserList = () => {
+    const [listData, setListData] = useState([]);
+
+    useEffect(() => {
+        let moviesId = window.localStorage.movies ? window.localStorage.movies.split(",") : [];
+
+        for (let i = 0; i < moviesId.length; i++){
+        axios.get(`https://api.themoviedb.org/3/movie/${moviesId[i]}?api_key=278c4d8a90056d4bdf066f2e7609e2b7&language=fr-FR`)
+        .then((res) => setListData((listData) => [...listData, res.data]));
+             }
+    }, []);
+
+
     return (
-        <div>
-           <Header></Header>
+        <div className='user-list-page'>
+           <Header />
+           <h2>Coup de coeur <span>&#128293;</span></h2>
+           <div className="result">
+           {listData.length > 0 ? (
+          listData.map((movie) => <Card movie={movie} key={movie.id} />)
+        ) : (
+          <h2>Aucun coup de coeur pour le moment</h2>
+        )}
+           </div>
         </div>
     );
 };

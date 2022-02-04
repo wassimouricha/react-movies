@@ -32,7 +32,7 @@ useEffect(() => {
              </div>
          </div>
          <div className="result">
-             {moviesData.slice(0, 12).sort((a, b) =>{if(sortGoodBad === "goodToBad"){  return b.vote_average - a.vote_average;} else if(sortGoodBad === "badToGood"){return a.vote_average - b.vote_average;}
+             {moviesData.slice(0, 42).sort((a, b) =>{if(sortGoodBad === "goodToBad"){  return b.vote_average - a.vote_average;} else if(sortGoodBad === "badToGood"){return a.vote_average - b.vote_average;}
              })
              .map((movie)=> <Card key={movie.id} movie={movie}/>)}
          </div>
