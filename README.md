@@ -1,5 +1,5 @@
 # Getting Started with Create React App
-
+#You have to do npm install on the terminal before doing npm start
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
