@@ -4,7 +4,7 @@ import Card from './Card';
 
 const Form = () => {
     const [moviesData, setMoviesData] = useState([]);
-    const [search, setSearch] = useState("code");
+    const [search, setSearch] = useState("star wars");
     const [sortGoodBad, setSortGoodBad] = useState(null);
 
     // ${} permet d'écrire du javascript
