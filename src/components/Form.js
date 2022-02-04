@@ -5,6 +5,7 @@ import Card from './Card';
 const Form = () => {
     const [moviesData, setMoviesData] = useState([]);
     const [search, setSearch] = useState("code");
+    const [sortGoodBad, setSortGoodBad] = useState(null);
 
     // ${} permet d'écrire du javascript
 
@@ -26,12 +27,18 @@ useEffect(() => {
              </form>
 
              <div className="btn-sort-container">
-                 <div className="btn-sort" id="goodToBad">Top <span>&#8640;</span></div>
-                 <div className="btn-sort" id="badToGood">FLop <span>&#8640;</span></div>
+                 <div className="btn-sort" id="goodToBad" onClick={() => setSortGoodBad("goodToBad")}>Top <span>&#8640;</span></div>
+                 <div className="btn-sort" id="badToGood" onClick={() => setSortGoodBad("badToGood")}>FLop <span>&#8640;</span></div>
              </div>
          </div>
          <div className="result">
-             {moviesData.slice(0, 12).map((movie)=> <Card key={movie.id} movie={movie}/>)}
+             {moviesData
+             .slice(0, 12)
+             .sort((a, b) =>{
+                 if(sortGoodBad === "goodToBad"){  return b.vote_average - a.vote_average;}
+              else if(sortGoodBad === "badToGood"){return a.vote_average - b.vote_average;}
+             })
+             .map((movie)=> <Card key={movie.id} movie={movie}/>)}
          </div>
      </div>
     );
