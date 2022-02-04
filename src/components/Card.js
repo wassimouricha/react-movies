@@ -82,9 +82,13 @@ const Card = ({ movie }) => {
       ? window.localStorage.movies.split(",")
       : [];
 
-
-    storedData.push( movie.id) ;
-    window.localStorage.movies = storedData;
+      if(!storedData.includes(movie.id.toString())){
+        storedData.push( movie.id) ;
+        window.localStorage.movies = storedData;
+      }else{
+        console.log("déjà fait !");
+      }
+  
     };
 
 
